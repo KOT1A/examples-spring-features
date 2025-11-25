@@ -1,0 +1,9 @@
+server:
+  port: 8101
+spring:
+  application:
+    name: @artifactId@
+retry:
+  attempts:
+    max: 5
+  backoff: 2000

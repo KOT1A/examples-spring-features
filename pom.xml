@@ -16,12 +16,13 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <java.version>25</java.version>
+    </properties>
+
     <modules>
         <module>data-jpa</module>
+        <module>retryable</module>
     </modules>
-
-    <properties>
-        <java.version>23</java.version>
-    </properties>
 
 </project>
