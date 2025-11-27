@@ -23,6 +23,7 @@
     <modules>
         <module>data-jpa</module>
         <module>retryable</module>
+        <module>hikari-cp</module>
     </modules>
 
 </project>

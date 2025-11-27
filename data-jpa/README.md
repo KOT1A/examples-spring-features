@@ -1,4 +1,4 @@
-# stream-api
+# data-jpa
 Примеры использования Spring Data JPA
 
 ___
