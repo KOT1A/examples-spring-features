@@ -1,0 +1,27 @@
+package ru.kot1a.examples.spring.hikari.cp.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.sql.Timestamp;
+
+@Getter
+@Setter
+@ToString
+@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userId;
+    private String userName;
+    private String userMiddleName;
+    private String userLastName;
+    private Timestamp userBirthday;
+}

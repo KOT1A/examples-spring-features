@@ -1,7 +1,8 @@
 services:
-  postgres:
+
+  pg-hikari-cp:
     image: postgres:17
-    container_name: pg_hikari_cp
+    container_name: pg-hikari-cp
     ports:
       - "5441:5432"
     environment:
@@ -12,7 +13,7 @@ services:
       - pg_data:/var/lib/postgresql/data
     command: [
       "postgres",
-      "-c", "max_connections=20",
+      "-c", "max_connections=60",
       "-c", "shared_buffers=128MB"
     ]
     healthcheck:
@@ -20,6 +21,48 @@ services:
       interval: 10s
       timeout: 5s
       retries: 20
+
+  hikari-cp-1:
+    image: hikari-cp:1.0.0
+    container_name: hikari-cp-1
+    ports:
+      - 8102:8102
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://pg-hikari-cp:5432/hikari_cp?currentSchema=hikari_cp
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    restart: always
+    depends_on:
+      pg-hikari-cp:
+        condition: service_healthy
+
+  hikari-cp-2:
+    image: hikari-cp:1.0.0
+    container_name: hikari-cp-2
+    ports:
+      - 8103:8102
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://pg-hikari-cp:5432/hikari_cp?currentSchema=hikari_cp
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    restart: always
+    depends_on:
+      pg-hikari-cp:
+        condition: service_healthy
+
+  hikari-cp-3:
+    image: hikari-cp:1.0.0
+    container_name: hikari-cp-3
+    ports:
+      - 8104:8102
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://pg-hikari-cp:5432/hikari_cp?currentSchema=hikari_cp
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    restart: always
+    depends_on:
+      pg-hikari-cp:
+        condition: service_healthy
 
 volumes:
   pg_data:

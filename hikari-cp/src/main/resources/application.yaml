@@ -4,13 +4,13 @@ spring:
   application:
     name: @artifactId@
   datasource:
-    url: jdbc:postgresql://localhost:5433/examples?currentSchema=examples_spring_hibernate
+    url: jdbc:postgresql://localhost:5433/hikari_cp?currentSchema=hikari_cp
     username: postgres
     password: 190695
     hikari:
-      maximum-pool-size: 20           # максимальное число одновременных соединений в пуле. Самый важный параметр.
+      maximum-pool-size: 10           # максимальное число одновременных соединений в пуле. Самый важный параметр.
       minimum-idle: 5                 # минимальное число простаивающих соединений.
-      connection-timeout: 30000       # сколько ждать свободное соединение (ms) до SQLTransientConnectionException.
+      connection-timeout: 10000       # сколько ждать свободное соединение (ms) до SQLTransientConnectionException.
       idle-timeout: 600000            # время, после которого простаивающее соединение может быть закрыто (ms).
       max-lifetime: 1800000           # максимальное «жизненное» время соединения; соединения старше этого времени будут перезапущены (ms).
       validation-timeout: 5000        # таймаут для проверки валидности соединения.
@@ -28,4 +28,12 @@ spring:
     open-in-view: false
   flyway:
     enabled: true
-    schemas: examples_spring_hibernate
+    schemas: hikari_cp
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus,info
+  endpoint:
+    prometheus:
+      enabled: true
