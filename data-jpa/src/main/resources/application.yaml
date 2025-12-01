@@ -4,9 +4,9 @@ spring:
   application:
     name: @artifactId@
   datasource:
-    url: jdbc:postgresql://localhost:5433/examples?currentSchema=examples_spring_hibernate
+    url: jdbc:postgresql://localhost:6432/data_jpa?currentSchema=data_jpa
     username: postgres
-    password: 190695
+    password: postgres
   jpa:
     properties:
       hibernate:
@@ -20,4 +20,4 @@ spring:
     open-in-view: false
   flyway:
     enabled: true
-    schemas: examples_spring_hibernate
+    schemas: data_jpa

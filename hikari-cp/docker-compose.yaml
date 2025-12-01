@@ -1,10 +1,9 @@
 services:
-
   pg-hikari-cp:
     image: postgres:17
     container_name: pg-hikari-cp
     ports:
-      - "5441:5432"
+      - "6432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
