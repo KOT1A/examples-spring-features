@@ -21,3 +21,9 @@ spring:
   flyway:
     enabled: true
     schemas: data_jpa
+resilience4j.ratelimiter:
+  instances:
+    basicLimiter:
+      limit-for-period: 2
+      limit-refresh-period: 1s
+      timeout-duration: 0

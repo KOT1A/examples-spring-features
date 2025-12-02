@@ -1,5 +1,6 @@
 package ru.kot1a.examples.spring.ratelimiter.controller;
 
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ public class UserController {
 
     private final UserService userService;
 
+    @RateLimiter(name = "basicLimiter")
     @GetMapping
     public List<User> findAll() {
         return userService.findAll();
