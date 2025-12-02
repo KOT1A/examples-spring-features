@@ -1,26 +1,26 @@
 server:
-  port: 8100
+  port: 8103
 spring:
   application:
     name: @artifactId@
   datasource:
-    url: jdbc:postgresql://localhost:6432/data_jpa?currentSchema=data_jpa
+    url: jdbc:postgresql://localhost:6432/rate_limiter?currentSchema=rate_limiter
     username: postgres
     password: postgres
   jpa:
     properties:
       hibernate:
-        show_sql: true
+        show_sql: false
         format_sql: true
         jdbc:
           batch_size: 5
-        order_inserts: true
-        order_updates: true
-        generate_statistics: true
+        order_inserts: false
+        order_updates: false
+        generate_statistics: false
     open-in-view: false
   flyway:
     enabled: true
-    schemas: data_jpa
+    schemas: rate_limiter
 resilience4j.ratelimiter:
   instances:
     basicLimiter:
