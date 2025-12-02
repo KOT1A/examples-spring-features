@@ -1,0 +1,23 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: @artifactId@
+  datasource:
+    url: jdbc:postgresql://localhost:6432/data_jpa?currentSchema=data_jpa
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        jdbc:
+          batch_size: 5
+        order_inserts: true
+        order_updates: true
+        generate_statistics: true
+    open-in-view: false
+  flyway:
+    enabled: true
+    schemas: data_jpa

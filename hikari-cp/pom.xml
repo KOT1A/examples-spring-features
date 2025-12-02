@@ -11,10 +11,6 @@
 
     <artifactId>hikari-cp</artifactId>
 
-    <properties>
-        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

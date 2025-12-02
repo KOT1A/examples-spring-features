@@ -18,12 +18,14 @@
 
     <properties>
         <java.version>25</java.version>
+        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
     </properties>
 
     <modules>
         <module>data-jpa</module>
         <module>retryable</module>
         <module>hikari-cp</module>
+        <module>rate-limiter</module>
     </modules>
 
 </project>
