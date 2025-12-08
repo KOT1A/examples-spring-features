@@ -1,4 +1,4 @@
-package ru.kot1a.examples.spring.ratelimiter.exception;
+package ru.kot1a.examples.spring.rate.limiter.exception;
 
 import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package ru.kot1a.examples.spring.ratelimiter;
+package ru.kot1a.examples.spring.rate.limiter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

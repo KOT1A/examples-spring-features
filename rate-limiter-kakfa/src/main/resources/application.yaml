@@ -1,0 +1,33 @@
+server:
+  port: 8104
+spring:
+  application:
+    name: @artifactId@
+  datasource:
+    url: jdbc:postgresql://localhost:6432/rate_limiter_kafka?currentSchema=rate_limiter_kafka
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+        jdbc:
+          batch_size: 5
+        order_inserts: false
+        order_updates: false
+        generate_statistics: false
+    open-in-view: false
+  flyway:
+    enabled: true
+    schemas: rate_limiter_kafka
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: my-group

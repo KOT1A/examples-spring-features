@@ -1,4 +1,4 @@
-package ru.kot1a.examples.spring.ratelimiter.entity;
+package ru.kot1a.examples.spring.rate.limiter.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

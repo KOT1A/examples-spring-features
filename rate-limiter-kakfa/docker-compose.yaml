@@ -1,0 +1,47 @@
+services:
+  pg-rate-limiter:
+    image: postgres:17
+    container_name: pg-rate-limiter-kafka
+    ports:
+      - "6432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rate_limiter_kafka
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    command: [
+      "postgres",
+      "-c", "max_connections=60",
+      "-c", "shared_buffers=128MB"
+    ]
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -p 5432" ]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.1
+    hostname: kafka
+    container_name: kafka-rate-limiter-kafka
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_NODE_ID=1
+      - KAFKA_PROCESS_ROLES=controller,broker
+      - KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka:9091
+      - KAFKA_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9091
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+      - CLUSTER_ID=e1CsY4zyQq658apNmMNfTw
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+
+volumes:
+  pg_data:
+  kafka-data:
