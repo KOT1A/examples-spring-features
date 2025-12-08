@@ -1,0 +1,51 @@
+server:
+  port: 8105
+spring:
+  application:
+    name: rate-limiter-kafka-stream
+  datasource:
+    url: jdbc:postgresql://localhost:6432/rate_limiter_kafka_stream?currentSchema=rate_limiter_kafka_stream
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+        jdbc:
+          batch_size: 5
+        order_inserts: false
+        order_updates: false
+        generate_statistics: false
+    open-in-view: false
+  flyway:
+    enabled: true
+    schemas: rate_limiter_kafka_stream
+
+  kafka:
+    streams:
+      application-id: rate-limiter-kafka-streams-app
+      bootstrap-servers: localhost:9092
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        outputMyTopicProducer-stream-binding:
+          destination: my-topic-one
+          content-type: text/plain
+        outputMyTopicTwoProducer-stream-binding:
+          destination: my-topic-two
+          content-type: text/plain
+        myTopicConsumer-in-0:
+          destination: my-topic-one
+          group: my-consumer-group
+          content-type: text/plain
+resilience4j:
+  ratelimiter:
+    instances:
+      kafka:
+        limit-for-period: 10
+        limit-refresh-period: 1s
+        timeout-duration: 0

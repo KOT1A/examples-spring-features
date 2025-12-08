@@ -26,7 +26,8 @@
         <module>retryable</module>
         <module>hikari-cp</module>
         <module>rate-limiter</module>
-        <module>rate-limiter-kakfa</module>
+        <module>rate-limiter-kafka</module>
+        <module>rate-limiter-kafka-stream</module>
     </modules>
 
 </project>
