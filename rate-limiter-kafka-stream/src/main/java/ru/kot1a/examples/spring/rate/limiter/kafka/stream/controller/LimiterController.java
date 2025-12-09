@@ -23,7 +23,7 @@ public class LimiterController {
         RateLimiterConfig newConfig = RateLimiterConfig.custom()
                 .limitForPeriod(rps)
                 .limitRefreshPeriod(Duration.ofSeconds(1))
-                .timeoutDuration(Duration.ZERO)
+                .timeoutDuration(Duration.ofSeconds(1))
                 .build();
 
         registry.remove(limiter);

@@ -48,8 +48,8 @@ resilience4j:
       sender:
         limit-for-period: 200
         limit-refresh-period: 1s
-        timeout-duration: 0
+        timeout-duration: 1s
       handler:
         limit-for-period: 2
         limit-refresh-period: 1s
-        timeout-duration: 0
+        timeout-duration: 1s

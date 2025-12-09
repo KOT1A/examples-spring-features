@@ -1,6 +1,5 @@
 package ru.kot1a.examples.spring.rate.limiter.kafka.stream.listener;
 
-import io.github.resilience4j.ratelimiter.RateLimiter;
 import io.github.resilience4j.ratelimiter.RateLimiterRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
