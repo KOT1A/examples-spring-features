@@ -21,8 +21,8 @@ public class MyTopicConsumer implements Consumer<String> {
 
     @Override
     public void accept(String message){
-        waitForPermission(registry.rateLimiter("kafka"));
+        waitForPermission(registry.rateLimiter("handler"));
         producerMyTopicTwo.send(message);
-        log.info("Прочитано из Kafka: {}", message);
+        log.info("Сообщение из Kafka: {}", message);
     }
 }

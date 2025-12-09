@@ -16,6 +16,6 @@ public class MessageController {
         for (int i=0; i<100; i++) {
             producerMyTopicOne.send(message);
         }
-        return "Message sent to Kafka: " + message;
+        return "В кафку отправлено сообщение: " + message;
     }
 }

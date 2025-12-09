@@ -45,7 +45,11 @@ spring:
 resilience4j:
   ratelimiter:
     instances:
-      kafka:
-        limit-for-period: 10
+      sender:
+        limit-for-period: 200
+        limit-refresh-period: 1s
+        timeout-duration: 0
+      handler:
+        limit-for-period: 2
         limit-refresh-period: 1s
         timeout-duration: 0
