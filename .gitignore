@@ -2,6 +2,7 @@
 /data-jpa/target/
 /retryable/target/
 /hikari-cp/target/
+/kafka-stream/target/
 /rate-limiter/target/
 /rate-limiter-kafka/target/
 /rate-limiter-kafka-stream/target/

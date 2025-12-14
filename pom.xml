@@ -28,6 +28,7 @@
         <module>rate-limiter</module>
         <module>rate-limiter-kafka</module>
         <module>rate-limiter-kafka-stream</module>
+        <module>kafka-stream</module>
     </modules>
 
 </project>
