@@ -25,7 +25,7 @@
         <module>data-jpa</module>
         <module>retryable</module>
         <module>hikari-cp</module>
-        <module>rate-limiter</module>
+        <module>rate-limiter-http</module>
         <module>rate-limiter-kafka</module>
         <module>rate-limiter-kafka-stream</module>
         <module>kafka-stream</module>

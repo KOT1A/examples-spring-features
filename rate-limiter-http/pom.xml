@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>rate-limiter</artifactId>
+    <artifactId>rate-limiter-http</artifactId>
 
     <properties>
         <version.resilience4j-spring-boot3>2.3.0</version.resilience4j-spring-boot3>
