@@ -18,6 +18,9 @@ import ru.kot1a.examples.spring.kafka.stream.dto.UserEvent;
 
 import java.time.Duration;
 
+/**
+ * Получаем сообщение в топик user-message и рассылаем статистику по 3 топикам
+ */
 @Configuration
 public class KafkaStreamConfiguration {
 
